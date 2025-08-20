@@ -1,5 +1,5 @@
 import React from "react";
-import { Camera, Eye, Info, Shield, Smartphone, Zap } from "lucide-react";
+import { FaCamera, FaEye, FaInfo, FaShieldAlt, FaMobile, FaBolt } from "react-icons/fa";
 
 export const HomePage = ({ setActiveTab }) => {
   return (
@@ -11,7 +11,7 @@ export const HomePage = ({ setActiveTab }) => {
             <div className="flex justify-center mb-8">
               <div className="relative">
                 <div className="absolute inset-0 animate-ping bg-blue-400 rounded-full opacity-75"></div>
-                <Eye className="relative h-20 w-20 text-blue-400" />
+                <FaEye className="relative h-20 w-20 text-blue-400" />
               </div>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6">
@@ -26,14 +26,14 @@ export const HomePage = ({ setActiveTab }) => {
                 onClick={() => setActiveTab('detection')}
                 className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
               >
-                <Camera className="h-5 w-5 mr-2" />
+                <FaCamera className="h-5 w-5 mr-2" />
                 Start Detection
               </button>
               <button
                 onClick={() => setActiveTab('about')}
                 className="inline-flex items-center px-8 py-3 border border-gray-600 text-base font-medium rounded-lg text-gray-300 bg-gray-800 hover:bg-gray-700 transition-colors"
               >
-                <Info className="h-5 w-5 mr-2" />
+                <FaInfo className="h-5 w-5 mr-2" />
                 Learn More
               </button>
             </div>
@@ -53,17 +53,17 @@ export const HomePage = ({ setActiveTab }) => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: Zap,
+                icon: FaBolt,
                 title: "Real-time Processing",
                 description: "Instant object detection with 10ms intervals for smooth, responsive performance"
               },
               {
-                icon: Smartphone,
+                icon: FaMobile,
                 title: "Mobile Optimized",
                 description: "Fully responsive design that works seamlessly across all devices and screen sizes"
               },
               {
-                icon: Shield,
+                icon: FaShieldAlt,
                 title: "Privacy First",
                 description: "All processing happens locally in your browser - no data ever leaves your device"
               }

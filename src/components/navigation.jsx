@@ -1,12 +1,20 @@
 import React from "react";
-import { BarChart3, Camera, Eye, Home, Info, Menu, X } from "lucide-react";
+import { 
+  FaHome, 
+  FaCamera, 
+  FaChartBar, 
+  FaInfoCircle, 
+  FaEye,
+  FaBars,
+  FaTimes
+} from "react-icons/fa";
 
 export const Navigation = ({ activeTab, setActiveTab, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const tabs = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'detection', label: 'Live Detection', icon: Camera },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-    { id: 'about', label: 'About', icon: Info },
+    { id: 'home', label: 'Home', icon: FaHome },
+    { id: 'detection', label: 'Live Detection', icon: FaCamera },
+    { id: 'analytics', label: 'Analytics', icon: FaChartBar },
+    { id: 'about', label: 'About', icon: FaInfoCircle },
   ];
 
   return (
@@ -15,7 +23,7 @@ export const Navigation = ({ activeTab, setActiveTab, isMobileMenuOpen, setIsMob
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <Eye className="h-8 w-8 text-blue-400" />
+              <FaEye className="h-8 w-8 text-blue-400" />
               <span className="ml-2 text-xl font-bold text-white">DetectAI</span>
             </div>
             
@@ -47,7 +55,7 @@ export const Navigation = ({ activeTab, setActiveTab, isMobileMenuOpen, setIsMob
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-300 hover:text-white p-2"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
             </button>
           </div>
         </div>

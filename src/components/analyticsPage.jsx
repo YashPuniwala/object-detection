@@ -1,5 +1,5 @@
 import React from "react";
-import { Activity, BarChart3, Eye, Monitor } from "lucide-react";
+import { FaEye, FaChartBar, FaRunning, FaDesktop } from "react-icons/fa";
 import { useState } from "react";
 
 export const AnalyticsPage = () => {
@@ -19,10 +19,10 @@ export const AnalyticsPage = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {[
-            { label: "Total Detections", value: totalDetections.toLocaleString(), icon: Eye, color: "blue" },
-            { label: "Unique Objects", value: uniqueObjects, icon: BarChart3, color: "green" },
-            { label: "Avg Accuracy", value: `${avgAccuracy}%`, icon: Activity, color: "purple" },
-            { label: "Session Time", value: sessionTime, icon: Monitor, color: "orange" },
+            { label: "Total Detections", value: totalDetections.toLocaleString(), icon: FaEye, color: "blue" },
+            { label: "Unique Objects", value: uniqueObjects, icon: FaChartBar, color: "green" },
+            { label: "Avg Accuracy", value: `${avgAccuracy}%`, icon: FaRunning, color: "purple" },
+            { label: "Session Time", value: sessionTime, icon: FaDesktop, color: "orange" },
           ].map((stat, index) => {
             const Icon = stat.icon;
             return (

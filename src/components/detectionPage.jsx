@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as tf from "@tensorflow/tfjs";                 
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
-import { Activity, Camera, Eye, Play, RefreshCw, Square } from "lucide-react";
+import { FaPlay, FaStop, FaEye, FaChartLine, FaCamera } from "react-icons/fa";
 
 // ✅ drawRect inline here
 const drawRect = (detections, ctx) => {
@@ -154,7 +154,7 @@ export const DetectionPage = () => {
                 {!isDetecting && !isModelLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
                     <div className="text-center">
-                      <Camera className="h-16 w-16 text-gray-500 mx-auto mb-4" />
+                      <FaCamera className="h-16 w-16 text-gray-500 mx-auto mb-4" />
                       <p className="text-gray-400 mb-4">Click start to begin detection</p>
                     </div>
                   </div>
@@ -163,7 +163,7 @@ export const DetectionPage = () => {
                 {isModelLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
                     <div className="text-center">
-                      <RefreshCw className="h-16 w-16 text-blue-400 mx-auto mb-4 animate-spin" />
+                      <div className="h-16 w-16 text-blue-400 mx-auto mb-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent"></div>
                       <p className="text-blue-400 mb-2">Loading AI Model...</p>
                       <p className="text-gray-500 text-sm">This may take a few moments</p>
                     </div>
@@ -213,7 +213,7 @@ export const DetectionPage = () => {
                     onClick={runCoco}
                     className="flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
                   >
-                    <Play className="h-5 w-5 mr-2" />
+                    <FaPlay className="h-5 w-5 mr-2" />
                     Start Detection
                   </button>
                 )}
@@ -222,7 +222,7 @@ export const DetectionPage = () => {
                     onClick={stopDetection}
                     className="flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
                   >
-                    <Square className="h-5 w-5 mr-2" />
+                    <FaStop className="h-5 w-5 mr-2" />
                     Stop Detection
                   </button>
                 )}
@@ -235,7 +235,7 @@ export const DetectionPage = () => {
             {/* Performance */}
             <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Activity className="h-5 w-5 mr-2 text-green-400" />
+                <FaChartLine className="h-5 w-5 mr-2 text-green-400" />
                 Performance
               </h3>
               <div className="space-y-4">
@@ -267,7 +267,7 @@ export const DetectionPage = () => {
             {/* Detected Objects */}
             <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Eye className="h-5 w-5 mr-2 text-purple-400" />
+                <FaEye className="h-5 w-5 mr-2 text-purple-400" />
                 Detected Objects
               </h3>
               <div className="space-y-2 max-h-64 overflow-y-auto">
