@@ -5,8 +5,6 @@ import Webcam from "react-webcam";
 import { FaPlay, FaStop, FaEye, FaChartLine, FaCamera } from "react-icons/fa";
 import { drawRect } from "./drawRect";
 
-// ✅ drawRect inline here
-
 export const DetectionPage = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -22,7 +20,6 @@ export const DetectionPage = () => {
   let lastTime = 0;
   let frameCount = 0;
 
-  // Start detection
   const runCoco = async () => {
     setIsModelLoading(true);
     try {
@@ -33,14 +30,13 @@ export const DetectionPage = () => {
 
       intervalRef.current = setInterval(() => {
         detect(net);
-      }, 50); // ✅ not too fast, prevents overload
+      }, 50);
     } catch (error) {
       console.error("Error loading model:", error);
       setIsModelLoading(false);
     }
   };
 
-  // Detect objects
   const detect = async (net) => {
     if (
       typeof webcamRef.current !== "undefined" &&
@@ -51,18 +47,15 @@ export const DetectionPage = () => {
       const videoWidth = video.videoWidth;
       const videoHeight = video.videoHeight;
       
-      // Update video size if needed
       if (videoSize.width !== videoWidth || videoSize.height !== videoHeight) {
         setVideoSize({ width: videoWidth, height: videoHeight });
       }
 
-      // Set canvas dimensions to match video
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
       const obj = await net.detect(video);
 
-      // Update UI stats
       setDetectionCount(obj.length);
       setDetectedObjects(
         obj.map((detection) => ({
@@ -71,7 +64,6 @@ export const DetectionPage = () => {
         }))
       );
 
-      // FPS calc
       const currentTime = Date.now();
       frameCount++;
       if (currentTime - lastTime >= 1000) {
@@ -80,9 +72,8 @@ export const DetectionPage = () => {
         lastTime = currentTime;
       }
 
-      // Draw detections
       const ctx = canvasRef.current.getContext("2d");
-      ctx.clearRect(0, 0, videoWidth, videoHeight); // ✅ clear before redraw
+      ctx.clearRect(0, 0, videoWidth, videoHeight); 
       drawRect(obj, ctx);
     }
   };
@@ -99,14 +90,12 @@ export const DetectionPage = () => {
   };
 
   useEffect(() => {
-    // Auto start detection
     runCoco();
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
 
-  // Calculate aspect ratio for proper scaling
   const aspectRatio = videoSize.height / videoSize.width;
 
   return (
@@ -120,7 +109,7 @@ export const DetectionPage = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Detection Area */}
+
           <div className="lg:col-span-2">
             <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
               <div 
@@ -150,7 +139,6 @@ export const DetectionPage = () => {
                   </div>
                 )}
 
-                {/* Webcam + Canvas */}
                 <Webcam
                   ref={webcamRef}
                   muted
@@ -186,7 +174,6 @@ export const DetectionPage = () => {
                 />
               </div>
 
-              {/* Controls */}
               <div className="flex flex-wrap gap-4 justify-center">
                 {!isDetecting && !isModelLoading && (
                   <button
@@ -210,9 +197,7 @@ export const DetectionPage = () => {
             </div>
           </div>
 
-          {/* Stats Panel */}
           <div className="space-y-6">
-            {/* Performance */}
             <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
                 <FaChartLine className="h-5 w-5 mr-2 text-green-400" />
@@ -244,7 +229,6 @@ export const DetectionPage = () => {
               </div>
             </div>
 
-            {/* Detected Objects */}
             <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
                 <FaEye className="h-5 w-5 mr-2 text-purple-400" />
