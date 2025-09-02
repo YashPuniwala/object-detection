@@ -1,8 +1,8 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { FaCamera, FaEye, FaInfo, FaShieldAlt, FaMobile, FaBolt } from "react-icons/fa";
 
 export const HomePage = ({ setActiveTab }) => {
-      // const [role, setRole] = useState(null);
+      const [role, setRole] = useState(null);
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Hero Section */}
@@ -42,7 +42,7 @@ export const HomePage = ({ setActiveTab }) => {
         </div>
       </div>
 
-       {/* <div className="p-6">
+       <div className="p-6">
       {!role && (
         <div className="flex gap-4">
           <button
@@ -61,7 +61,7 @@ export const HomePage = ({ setActiveTab }) => {
       )}
       {role === "phone" && <Phone />}
       {role === "viewer" && <Viewer />}
-    </div> */}
+    </div>
 
       {/* Features Section */}
       <div className="py-20 bg-gray-800/50">
